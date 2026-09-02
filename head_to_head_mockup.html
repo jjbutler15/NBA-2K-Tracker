@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Head-to-Head Comparison - Mockup</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .player-select {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 30px;
+            gap: 20px;
+        }
+
+        .select-wrapper {
+            text-align: center;
+            flex: 1;
+        }
+
+        .select-wrapper label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        select:hover {
+            border-color: #764ba2;
+        }
+
+        .vs-divider {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+            padding: 0 10px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .comparison-table td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comparison-table tr:hover {
+            background: #f8f9ff;
+        }
+
+        .stat-label {
+            font-weight: bold;
+            color: #555;
+            text-align: left !important;
+            padding-left: 20px !important;
+        }
+
+        .better {
+            background: #d4edda;
+            font-weight: bold;
+            color: #155724;
+        }
+
+        .worse {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .player-header {
+            font-size: 18px;
+            padding: 20px !important;
+        }
+
+        .games-played {
+            font-size: 12px;
+            color: #888;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .section-header {
+            background: #f0f0f0 !important;
+            font-weight: bold;
+            color: #333 !important;
+            text-align: left !important;
+            padding: 10px 20px !important;
+        }
+
+        .note {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏀 HEAD-TO-HEAD COMPARISON</h1>
+
+        <div class="player-select">
+            <div class="select-wrapper">
+                <label for="player1">Select Player 1</label>
+                <select id="player1">
+                    <option value="HoldMyBir" selected>HoldMyBir</option>
+                    <option value="KingxMarsh">KingxMarsh</option>
+                    <option value="Eezy">Eezy</option>
+                    <option value="QuickDrew">QuickDrew</option>
+                    <option value="Buckets">Buckets</option>
+                </select>
+            </div>
+
+            <div class="vs-divider">VS</div>
+
+            <div class="select-wrapper">
+                <label for="player2">Select Player 2</label>
+                <select id="player2">
+                    <option value="HoldMyBir">HoldMyBir</option>
+                    <option value="KingxMarsh" selected>KingxMarsh</option>
+                    <option value="Eezy">Eezy</option>
+                    <option value="QuickDrew">QuickDrew</option>
+                    <option value="Buckets">Buckets</option>
+                </select>
+            </div>
+        </div>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th style="width: 30%">STAT CATEGORY</th>
+                    <th class="player-header" style="width: 35%">
+                        HoldMyBir
+                        <span class="games-played">12 Games Played</span>
+                    </th>
+                    <th class="player-header" style="width: 35%">
+                        KingxMarsh
+                        <span class="games-played">12 Games Played</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="3" class="section-header">SCORING</td>
+                </tr>
+                <tr>
+                    <td class="stat-label">Points Per Game</td>
+                    <td class="better">18.4 PPG</td>
+                    <td>15.7 PPG</td>
+                </tr>
+                <tr>
+                    <td class="stat-label">Total Points</td>
+                    <td class="better">221 PTS</td>
+                    <td>188 PTS</td>
+                </tr>
+                <tr>
+                    <td class="stat-label">Field Goal %</td>
+                    <td>52.3%</td>
+                    <td class="better">58.1%</td>
+                </tr>
+                <tr>
+                    <td class="stat-label">3-Point %</td>
+                    <td class="better">41.2%</td>
+                    <td>35.7%</td>
+                </tr>
+                <tr>
+                    <td class="stat-label">Career High Points</td>
+                    <td>28 PTS</td>
+                    <td class="better">31 PTS</td>
+                </tr>
+
+                <tr>
+                    <td colspan="3" class="section-header">PLAYMAKING</td>
+                </tr>
+                <tr>
+                    <td class="stat-label">Assists Per Game</td>
+                    <td>3.2 APG</td>
+                    <td class="better">5.8 APG</td>
+                </tr>
+                <tr>
+                    <td class="stat-label">Total Assists</td>
+                    <td>38 AST</td>
+                    <td class="better">70 AST</td>
+                </tr>
+
+                <tr>
+                    <td colspan="3" class="section-header">REBOUNDING</td>
+                </tr>
+                <tr>
+                    <td class="stat-label">Rebounds Per Game</td>
+                    <td class="better">8.1 RPG</td>
+                    <td>4.3 RPG</td>
+                </tr>
+                <tr>
+                    <td class="stat-label">Total Rebounds</td>
+                    <td class="better">97 REB</td>
+                    <td>52 REB</td>
+                </tr>
+
+                <tr>
+                    <td colspan="3" class="section-header">DEFENSE</td>
+                </tr>
+                <tr>
+                    <td class="stat-label">Points Allowed Per Game</td>
+                    <td class="worse">21.3 PA</td>
+                    <td class="better">18.5 PA</td>
+                </tr>
+                <tr>
+                    <td class="stat-label">Total Points Allowed</td>
+                    <td class="worse">256 PA</td>
+                    <td class="better">222 PA</td>
+                </tr>
+                <tr>
+                    <td class="stat-label">Worst Defensive Game</td>
+                    <td class="worse">34 PA</td>
+                    <td>28 PA</td>
+                </tr>
+
+                <tr>
+                    <td colspan="3" class="section-header">EFFICIENCY</td>
+                </tr>
+                <tr>
+                    <td class="stat-label">Plus/Minus Per Game</td>
+                    <td>-2.9</td>
+                    <td class="better">-2.8</td>
+                </tr>
+                <tr>
+                    <td class="stat-label">True Shooting %</td>
+                    <td class="better">59.2%</td>
+                    <td>57.8%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p class="note">Green = Better Performance | Red = Worse Performance</p>
+    </div>
+</body>
+</html>

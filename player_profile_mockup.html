@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Profile - Mockup</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+    <style>
+        :root {
+          --bg: #080b10;
+          --surface: #0f1318;
+          --card: #141920;
+          --card2: #1a2028;
+          --border: #1e2730;
+          --border2: #2a3540;
+          --gold: #f0c040;
+          --gold2: #ffd966;
+          --cyan: #38c8e0;
+          --green: #3de8a0;
+          --red: #e84060;
+          --orange: #f07030;
+          --text: #e8eef4;
+          --muted: #5a7080;
+          --muted2: #8aa0b0;
+          --display: 'Bebas Neue', sans-serif;
+          --condensed: 'Barlow Condensed', sans-serif;
+          --mono: 'JetBrains Mono', monospace;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--condensed);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 50% at 50% -10%, rgba(56,200,224,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 40% 60% at 90% 80%, rgba(240,192,64,0.05) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Back Button */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--muted2);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+            transition: all 0.2s;
+        }
+
+        .back-btn:hover {
+            color: var(--gold);
+            border-color: var(--gold);
+            transform: translateX(-4px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--card2) 0%, var(--card) 100%);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 48px;
+            margin-bottom: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--cyan));
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+        }
+
+        .hero-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--gold);
+            box-shadow: 0 8px 40px rgba(240,192,64,0.4);
+        }
+
+        .hero-info {
+            flex: 1;
+        }
+
+        .hero-name {
+            font-family: var(--display);
+            font-size: 56px;
+            line-height: 1;
+            letter-spacing: 3px;
+            color: var(--gold);
+            margin-bottom: 8px;
+            text-shadow: 0 2px 20px rgba(240,192,64,0.3);
+        }
+
+        .hero-position {
+            font-family: var(--mono);
+            font-size: 14px;
+            letter-spacing: 3px;
+            color: var(--muted);
+            margin-bottom: 32px;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 24px;
+            max-width: 700px;
+        }
+
+        .hero-stat {
+            text-align: left;
+        }
+
+        .hero-stat-value {
+            font-family: var(--display);
+            font-size: 42px;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .hero-stat-label {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--muted);
+            letter-spacing: 2px;
+            margin-top: 4px;
+        }
+
+        /* Section Grid */
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .profile-section {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 24px;
+        }
+
+        .profile-section-title {
+            font-family: var(--display);
+            font-size: 24px;
+            letter-spacing: 2px;
+            color: var(--cyan);
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border2);
+        }
+
+        /* Career Highs */
+        .career-highs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .career-high-item {
+            background: var(--card);
+            border: 1px solid var(--border2);
+            border-radius: 10px;
+            padding: 16px;
+            transition: all 0.2s;
+        }
+
+        .career-high-item:hover {
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .career-high-value {
+            font-family: var(--display);
+            font-size: 36px;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .career-high-label {
+            font-family: var(--condensed);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+            margin-top: 8px;
+            letter-spacing: 1px;
+        }
+
+        .career-high-date {
+            font-family: var(--mono);
+            font-size: 10px;
+            color: var(--muted);
+            margin-top: 4px;
+        }
+
+        /* Recent Games */
+        .recent-games-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .recent-game {
+            background: var(--card);
+            border: 1px solid var(--border2);
+            border-radius: 10px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.2s;
+        }
+
+        .recent-game:hover {
+            border-color: var(--cyan);
+            transform: translateX(4px);
+        }
+
+        .recent-game-date {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--muted);
+            letter-spacing: 1px;
+            min-width: 90px;
+        }
+
+        .recent-game-result {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 80px;
+        }
+
+        .result-badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-family: var(--mono);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .result-badge.win {
+            background: rgba(61,232,160,0.15);
+            color: var(--green);
+            border: 1px solid var(--green);
+        }
+
+        .result-badge.loss {
+            background: rgba(232,64,96,0.15);
+            color: var(--red);
+            border: 1px solid var(--red);
+        }
+
+        .recent-game-stats {
+            display: flex;
+            gap: 16px;
+            font-family: var(--mono);
+            font-size: 14px;
+            flex: 1;
+            justify-content: flex-end;
+        }
+
+        .stat-item {
+            color: var(--muted2);
+        }
+
+        .stat-item strong {
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        /* Season Stats Table */
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .stats-table th {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: var(--muted);
+            text-align: left;
+            padding: 12px 8px;
+            border-bottom: 2px solid var(--border2);
+        }
+
+        .stats-table td {
+            font-family: var(--condensed);
+            font-size: 15px;
+            font-weight: 600;
+            padding: 12px 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stats-table tr:hover {
+            background: rgba(240,192,64,0.03);
+        }
+
+        .stat-highlight {
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        /* Badges */
+        .badges-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        .badge-item {
+            background: var(--card);
+            border: 1px solid var(--border2);
+            border-left: 4px solid var(--gold);
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .badge-title {
+            font-family: var(--condensed);
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 4px;
+            letter-spacing: 1px;
+        }
+
+        .badge-desc {
+            font-size: 13px;
+            color: var(--muted2);
+        }
+
+        /* Streak Indicator */
+        .streak-indicator {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--card);
+            border: 1px solid var(--border2);
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+
+        .streak-icon {
+            font-size: 32px;
+        }
+
+        .streak-text {
+            flex: 1;
+        }
+
+        .streak-label {
+            font-family: var(--condensed);
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text);
+            letter-spacing: 1px;
+        }
+
+        .streak-value {
+            font-family: var(--display);
+            font-size: 24px;
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+
+        .hot {
+            border-left: 4px solid var(--red);
+        }
+
+        .cold {
+            border-left: 4px solid var(--cyan);
+        }
+
+        @media (max-width: 1024px) {
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="#" class="back-btn">← BACK TO DASHBOARD</a>
+
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="hero-content">
+                <img src="headshots/holdmybir.png" alt="HoldMyBir" class="hero-photo">
+                <div class="hero-info">
+                    <div class="hero-name">HOLDMYBIR</div>
+                    <div class="hero-position">SHOOTING GUARD • #2</div>
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">18.4</div>
+                            <div class="hero-stat-label">POINTS PER GAME</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">8.1</div>
+                            <div class="hero-stat-label">REBOUNDS PER GAME</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">3.2</div>
+                            <div class="hero-stat-label">ASSISTS PER GAME</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">52.3%</div>
+                            <div class="hero-stat-label">FIELD GOAL %</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Grid -->
+        <div class="profile-grid">
+            <!-- Left Column -->
+            <div>
+                <!-- Current Form -->
+                <div class="profile-section">
+                    <div class="profile-section-title">🔥 CURRENT FORM</div>
+                    <div class="streak-indicator hot">
+                        <div class="streak-icon">🔥</div>
+                        <div class="streak-text">
+                            <div class="streak-label">HOT STREAK</div>
+                            <div class="streak-value">+15% ABOVE AVG</div>
+                        </div>
+                    </div>
+                    <div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:12px;letter-spacing:1px;">LAST 5 GAMES</div>
+                    <div class="hero-stats" style="grid-template-columns: repeat(4, 1fr); margin-bottom:20px;">
+                        <div class="hero-stat">
+                            <div class="hero-stat-value" style="font-size:32px;">21.2</div>
+                            <div class="hero-stat-label">PPG</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-value" style="font-size:32px;">9.4</div>
+                            <div class="hero-stat-label">RPG</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-value" style="font-size:32px;">3.8</div>
+                            <div class="hero-stat-label">APG</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-value" style="font-size:32px;">58%</div>
+                            <div class="hero-stat-label">FG%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Games -->
+                <div class="profile-section" style="margin-top:24px;">
+                    <div class="profile-section-title">📅 RECENT GAMES</div>
+                    <div class="recent-games-list">
+                        <div class="recent-game">
+                            <div class="recent-game-date">APR 22, 2026</div>
+                            <div class="recent-game-result">
+                                <span class="result-badge win">W</span>
+                                <span style="font-family:var(--mono);font-size:13px;color:var(--muted);">63-38</span>
+                            </div>
+                            <div class="recent-game-stats">
+                                <span class="stat-item"><strong>20</strong> PTS</span>
+                                <span class="stat-item"><strong>1</strong> REB</span>
+                                <span class="stat-item"><strong>4</strong> AST</span>
+                                <span class="stat-item"><strong>34</strong> PA</span>
+                            </div>
+                        </div>
+                        <div class="recent-game">
+                            <div class="recent-game-date">APR 15, 2026</div>
+                            <div class="recent-game-result">
+                                <span class="result-badge win">W</span>
+                                <span style="font-family:var(--mono);font-size:13px;color:var(--muted);">78-65</span>
+                            </div>
+                            <div class="recent-game-stats">
+                                <span class="stat-item"><strong>24</strong> PTS</span>
+                                <span class="stat-item"><strong>11</strong> REB</span>
+                                <span class="stat-item"><strong>3</strong> AST</span>
+                                <span class="stat-item"><strong>18</strong> PA</span>
+                            </div>
+                        </div>
+                        <div class="recent-game">
+                            <div class="recent-game-date">APR 12, 2026</div>
+                            <div class="recent-game-result">
+                                <span class="result-badge loss">L</span>
+                                <span style="font-family:var(--mono);font-size:13px;color:var(--muted);">55-62</span>
+                            </div>
+                            <div class="recent-game-stats">
+                                <span class="stat-item"><strong>18</strong> PTS</span>
+                                <span class="stat-item"><strong>7</strong> REB</span>
+                                <span class="stat-item"><strong>2</strong> AST</span>
+                                <span class="stat-item"><strong>22</strong> PA</span>
+                            </div>
+                        </div>
+                        <div class="recent-game">
+                            <div class="recent-game-date">APR 7, 2026</div>
+                            <div class="recent-game-result">
+                                <span class="result-badge win">W</span>
+                                <span style="font-family:var(--mono);font-size:13px;color:var(--muted);">71-58</span>
+                            </div>
+                            <div class="recent-game-stats">
+                                <span class="stat-item"><strong>22</strong> PTS</span>
+                                <span class="stat-item"><strong>10</strong> REB</span>
+                                <span class="stat-item"><strong>5</strong> AST</span>
+                                <span class="stat-item"><strong>16</strong> PA</span>
+                            </div>
+                        </div>
+                        <div class="recent-game">
+                            <div class="recent-game-date">APR 3, 2026</div>
+                            <div class="recent-game-result">
+                                <span class="result-badge win">W</span>
+                                <span style="font-family:var(--mono);font-size:13px;color:var(--muted);">82-70</span>
+                            </div>
+                            <div class="recent-game-stats">
+                                <span class="stat-item"><strong>22</strong> PTS</span>
+                                <span class="stat-item"><strong>8</strong> REB</span>
+                                <span class="stat-item"><strong>4</strong> AST</span>
+                                <span class="stat-item"><strong>19</strong> PA</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Season Stats -->
+                <div class="profile-section" style="margin-top:24px;">
+                    <div class="profile-section-title">📊 SEASON STATISTICS</div>
+                    <table class="stats-table">
+                        <thead>
+                            <tr>
+                                <th>CATEGORY</th>
+                                <th>TOTAL</th>
+                                <th>PER GAME</th>
+                                <th>RANK</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Points</td>
+                                <td class="stat-highlight">221</td>
+                                <td>18.4</td>
+                                <td>#1</td>
+                            </tr>
+                            <tr>
+                                <td>Rebounds</td>
+                                <td class="stat-highlight">97</td>
+                                <td>8.1</td>
+                                <td>#1</td>
+                            </tr>
+                            <tr>
+                                <td>Assists</td>
+                                <td>38</td>
+                                <td>3.2</td>
+                                <td>#3</td>
+                            </tr>
+                            <tr>
+                                <td>Steals</td>
+                                <td>18</td>
+                                <td>1.5</td>
+                                <td>#2</td>
+                            </tr>
+                            <tr>
+                                <td>Blocks</td>
+                                <td>12</td>
+                                <td>1.0</td>
+                                <td>#2</td>
+                            </tr>
+                            <tr>
+                                <td>Turnovers</td>
+                                <td>24</td>
+                                <td>2.0</td>
+                                <td>#3</td>
+                            </tr>
+                            <tr>
+                                <td>Points Allowed</td>
+                                <td>256</td>
+                                <td>21.3</td>
+                                <td>#4</td>
+                            </tr>
+                            <tr>
+                                <td>Point Differential</td>
+                                <td>-35</td>
+                                <td>-2.9</td>
+                                <td>#4</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div>
+                <!-- Career Highs -->
+                <div class="profile-section">
+                    <div class="profile-section-title">🏆 CAREER HIGHS</div>
+                    <div class="career-highs-grid">
+                        <div class="career-high-item">
+                            <div class="career-high-value">28</div>
+                            <div class="career-high-label">POINTS</div>
+                            <div class="career-high-date">Mar 15, 2026</div>
+                        </div>
+                        <div class="career-high-item">
+                            <div class="career-high-value">14</div>
+                            <div class="career-high-label">REBOUNDS</div>
+                            <div class="career-high-date">Apr 1, 2026</div>
+                        </div>
+                        <div class="career-high-item">
+                            <div class="career-high-value">7</div>
+                            <div class="career-high-label">ASSISTS</div>
+                            <div class="career-high-date">Mar 22, 2026</div>
+                        </div>
+                        <div class="career-high-item">
+                            <div class="career-high-value">5</div>
+                            <div class="career-high-label">STEALS</div>
+                            <div class="career-high-date">Apr 7, 2026</div>
+                        </div>
+                        <div class="career-high-item">
+                            <div class="career-high-value">4</div>
+                            <div class="career-high-label">BLOCKS</div>
+                            <div class="career-high-date">Mar 28, 2026</div>
+                        </div>
+                        <div class="career-high-item">
+                            <div class="career-high-value" style="color:var(--red);">34</div>
+                            <div class="career-high-label">MOST PA</div>
+                            <div class="career-high-date">Apr 22, 2026</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievements -->
+                <div class="profile-section" style="margin-top:24px;">
+                    <div class="profile-section-title">🎖️ ACHIEVEMENTS</div>
+                    <div class="badges-grid">
+                        <div class="badge-item">
+                            <div class="badge-title">🔥 Hot Streak</div>
+                            <div class="badge-desc">3+ games above season average</div>
+                        </div>
+                        <div class="badge-item">
+                            <div class="badge-title">🏀 Double-Double</div>
+                            <div class="badge-desc">5 games with 10+ PTS & 10+ REB</div>
+                        </div>
+                        <div class="badge-item">
+                            <div class="badge-title">🎯 Sharpshooter</div>
+                            <div class="badge-desc">20+ points in 8 games</div>
+                        </div>
+                        <div class="badge-item">
+                            <div class="badge-title">💪 Ironman</div>
+                            <div class="badge-desc">Played in all 12 games</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="profile-section" style="margin-top:24px;">
+                    <div class="profile-section-title">⚡ SHOOTING</div>
+                    <table class="stats-table">
+                        <tbody>
+                            <tr>
+                                <td>Field Goal %</td>
+                                <td class="stat-highlight">52.3%</td>
+                            </tr>
+                            <tr>
+                                <td>3-Point %</td>
+                                <td class="stat-highlight">41.2%</td>
+                            </tr>
+                            <tr>
+                                <td>Free Throw %</td>
+                                <td class="stat-highlight">78.5%</td>
+                            </tr>
+                            <tr>
+                                <td>eFG%</td>
+                                <td class="stat-highlight">58.7%</td>
+                            </tr>
+                            <tr>
+                                <td>True Shooting %</td>
+                                <td class="stat-highlight">59.2%</td>
+                            </tr>
+                            <tr>
+                                <td>AST/TO Ratio</td>
+                                <td class="stat-highlight">1.58</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
